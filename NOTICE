@@ -1,5 +1,5 @@
 setup-arctl
-Copyright 2024 Andy Airey
+Copyright 2026 Andy Airey
 
 This GitHub Action downloads and installs the arctl CLI binary from the
 agentregistry project (https://github.com/agentregistry-dev/agentregistry),
