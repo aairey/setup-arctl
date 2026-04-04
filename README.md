@@ -3,22 +3,24 @@
 [![Latest release](https://img.shields.io/github/v/release/aairey/setup-arctl?label=action&logo=github)](https://github.com/aairey/setup-arctl/releases/latest)
 [![arctl version](https://img.shields.io/github/v/release/agentregistry-dev/agentregistry?label=arctl%20default&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMiAxNWwtNS01IDEuNDEtMS40MUwxMCAxNC4xN2w3LjU5LTcuNTlMMTkgOGwtOSA5eiIvPjwvc3ZnPg==)](https://github.com/agentregistry-dev/agentregistry/releases/latest)
 [![License](https://img.shields.io/github/license/aairey/setup-arctl)](LICENSE)
-[![Platforms](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-blue)](#supported-platforms)
+[![Platforms](https://img.shields.io/badge/platform-linux-blue)](#supported-platforms)
 
 GitHub Action to install and verify the [`arctl`](https://github.com/agentregistry-dev/agentregistry) CLI from official GitHub releases.
 
 Downloads the binary for the current OS/architecture, verifies the SHA256 checksum from the upstream `.sha256` release asset, and installs it to PATH.
 
+**Note:** v2.0.0+ requires Linux runners. The action will automatically install required dependencies (`curl`, `ca-certificates`).
+
 ## Usage
 
 ```yaml
-- uses: aairey/setup-arctl@v1.0.0
+- uses: aairey/setup-arctl@v2
 ```
 
 ### With a specific version
 
 ```yaml
-- uses: aairey/setup-arctl@v1.0.0
+- uses: aairey/setup-arctl@v2
   with:
     version: '0.3.3'
 ```
@@ -34,10 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install system dependencies
-        run: apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
-
-      - uses: aairey/setup-arctl@v1.0.0
+      - uses: aairey/setup-arctl@v2
         with:
           version: '0.3.3'
         env:
@@ -68,7 +67,7 @@ jobs:
       - name: Install system dependencies
         run: apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
 
-      - uses: aairey/setup-arctl@v1.0.0
+      - uses: aairey/setup-arctl@v2
         with:
           version: '0.3.3'
         env:
@@ -102,7 +101,7 @@ jobs:
       - name: Install system dependencies
         run: apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
 
-      - uses: aairey/setup-arctl@v1.0.0
+      - uses: aairey/setup-arctl@v2
         with:
           version: '0.3.3'
         env:
@@ -148,8 +147,8 @@ jobs:
 | OS | Architecture |
 |----|-------------|
 | Linux | amd64, arm64 |
-| macOS | amd64, arm64 |
-| Windows | amd64 |
+
+**Note:** v2.0.0+ only supports Linux runners. The action will fail on macOS and Windows.
 
 ## License
 
